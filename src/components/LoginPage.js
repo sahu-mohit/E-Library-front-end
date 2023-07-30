@@ -1,14 +1,30 @@
 import React, { useState } from "react";
 import "../style/login.css";
+import BackendCall from "../service/BackendCall";
 function LoginPage() {
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [pass, setpass] = useState('');
 
     const handleLogin = () => {
         // Here you can handle the login logic, e.g., send a request to the server for authentication.
-        // For this example, we'll just print the email and password to the console.
+        // For this example, we'll just print the email and pass to the console.
         console.log('Email:', email);
-        console.log('Password:', password);
+        console.log('pass:', pass);
+
+      const data = {
+        emailId : email,
+        password : pass
+      }
+        BackendCall.postCall("login",data).then(responce=>{
+          if(responce.data === "success"){
+            alert("Succesfully Loged in ");
+          }else{
+            alert("UserId pass not matched");
+          }
+        }).catch(error => {
+            console.log(error);
+        })
+
       };
 
   return (
@@ -20,14 +36,14 @@ function LoginPage() {
         <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email" />
       </div>
       <div className="form-group">
-        <label>Password:</label>
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password" />
+        <label>password:</label>
+        <input type="password" value={pass} onChange={(e) => setpass(e.target.value)} placeholder="Enter your password" />
       </div>
       <div className="form-group">
         <button onClick={handleLogin}>Login</button>
       </div>
-      <div className="form-group forgot-password">
-        <a href="#">Forgot password?</a>
+      <div className="form-group forgot-pass">
+        <a href="#">Forgot pass?</a>
       </div>
       <div className="form-group register-link">
         <span>Don't have an account?</span>
