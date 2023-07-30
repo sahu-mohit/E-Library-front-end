@@ -19,7 +19,7 @@
     padding-right: 45px;
     padding-left: 10px;
   }
-  .registration-container h2 {
+  .registration-container h2 ,h6 {
     text-align: center;
     color: #ff8755;
     margin-bottom: 30px;
