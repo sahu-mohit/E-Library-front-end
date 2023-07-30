@@ -27,12 +27,6 @@ const RegistrationPage = () => {
     
   }
   const handleRegister = () => {
-    // Here you can handle the registration logic, e.g., send a request to the server for registration.
-    // For this example, we'll just print the form data to the console.
-    // console.log(' Name:', firstName);
-    // console.log('Email:', email);
-    // console.log('Password:', password);
-    // console.log('Confirm Password:', confirmPassword);
     const user = {
       firstname : firstName,
       lastname : lastName,
