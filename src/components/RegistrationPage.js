@@ -33,6 +33,8 @@ const RegistrationPage = () => {
     BackendCall.getCall("get-user-by-id?userid="+email,"").then((response) =>{
       if(response.data !==""){
         setMsg("Mail id already exist");
+      }else{
+        setMsg("");
       }
     }).catch(error =>{
       console.log(error);
@@ -119,8 +121,9 @@ const RegistrationPage = () => {
             required
               type="text"
               value={email}
-              // onChange={(e) => setEmail(e.target.value)}
-              onChange={handlemail}
+              onChange={(e) => setEmail(e.target.value)}
+              // onChange={handlemail}
+              onBlur={handlemail}
               placeholder="Enter your email"
             />
           </div>
