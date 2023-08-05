@@ -1,23 +1,26 @@
 import React, { useState } from "react";
+import {useNavigate } from 'react-router-dom';
 import "../style/login.css";
 import BackendCall from "../service/BackendCall";
 function LoginPage() {
     const [email, setEmail] = useState('');
     const [pass, setpass] = useState('');
+    const navigate = useNavigate();
 
     const handleLogin = () => {
         // Here you can handle the login logic, e.g., send a request to the server for authentication.
         // For this example, we'll just print the email and pass to the console.
-        console.log('Email:', email);
-        console.log('pass:', pass);
+        // console.log('Email:', email);
+        // console.log('pass:', pass);
 
       const data = {
         emailId : email,
         password : pass
       }
         BackendCall.postCall("login",data).then(responce=>{
-          if(responce.data === "success"){
+          if(responce.data.message === "success"){
             alert("Succesfully Loged in ");
+            navigate('/dashboard');
           }else{
             alert("UserId pass not matched");
           }

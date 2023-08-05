@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import {useNavigate } from 'react-router-dom';
 import "../style/registration.css";
 import BackendCall from "../service/BackendCall";
+import Common from "./Common";
 
 const RegistrationPage = () => {
   const [firstName, setFirstName] = useState("");
@@ -68,6 +69,8 @@ const RegistrationPage = () => {
         setEmail("");
         setContactNo("");
         setPassword("");
+        setConfirmPassword("");
+        new Common().showAlert("Registration Successfully","success")
         navigate('/login');      
       }else{
         setMsg(response.data);
